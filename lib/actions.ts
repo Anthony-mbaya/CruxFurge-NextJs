@@ -1,44 +1,48 @@
 "use server"
 
 import { auth } from "@/auth"
-import { parseServerActionResponse } from "./utils";
+import { parseServerActionResponse } from "@/lib/utils";
 import { writeClient } from "@/sanity/lib/write-client";
-
+//import slugify from "slugify";
 export const createPitch = async (
     state: any,
     form:FormData,
     pitch: string,
  ) => {
-    const session = await auth();
+    const session = await auth(); 
 
     if(!session) return parseServerActionResponse({
         error: 'not signed in',
         status:"ERROR",
     });
     const { title, description, category, img_link } = Object.fromEntries(
-        Array.from(form).filter(([key]) => key !== "pitch"),
-    );
+    Array.from(form).filter(([key]) => key !== "pitch"),
+  );
+     //const slug = slugify(title as string, { lower: true, strict: true });
 
     try{
         const event = {
             title,
             description,
             category,
-            image: img_link,
+            image: img_link,  
             author: {
-                _type: 'reference',
+                _type: "reference",
                 _ref: session?.id,
             },
             pitch,
         };
-        const result = await writeClient.create({_type:'event',...event});
+        const result = await writeClient.create({_type:'tech-events',...event});
         return parseServerActionResponse({
             ...result,
             error: '',
-            status: 'SUCCESS'
+            status: 'SUCCESS',
         });
     }catch(error){
         console.log(error);
-
+        return parseServerActionResponse({
+            error: JSON.stringify(error),
+            status: "ERROR",
+          });
     }
 }

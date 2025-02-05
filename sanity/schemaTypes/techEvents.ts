@@ -14,20 +14,15 @@ export const techEvents = defineType(
             ),
             defineField(
                 {
-                    name: 'slug',
-                    type: 'slug',
-                    options: {
-                        source: 'title'
-                    }
-                }
-            ),
-            defineField(
-                {
                     name: 'author',
                     type: 'reference',
-                    to: { type: 'author' }
+                    to: { type: 'author' },
                 }
             ),
+            defineField({
+                name: "views",
+                type: "number",
+              }),
             defineField(
                 {
                     name: 'description',

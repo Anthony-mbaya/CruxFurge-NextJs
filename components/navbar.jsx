@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+//import Image from "next/image";
 
 import React from "react";
 import { auth, signOut, signIn } from "@/auth";
@@ -10,7 +10,7 @@ const Navbar = async () => {
     <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
       <nav className="flex justify-between items-center">
         <Link href="/">
-          <Image src={"/images.jpeg"} alt="logo" width={144} height={30} />
+          <img src="/images.jpeg" alt="logo" width={144} height={30} />
         </Link>
         {/* links */}
         <div className="links text-black">

@@ -1,9 +1,9 @@
 "use client";
 import React, { useActionState, useState } from "react";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Send } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { formSchema } from "@/lib/validation";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
@@ -15,7 +15,7 @@ export default function EventsForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pitch, setPitch] = useState("hello");
   const { toast } = useToast();
-  const router = useRouter();
+  const router = useRouter(); 
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
       const formValues = {
@@ -23,20 +23,22 @@ export default function EventsForm() {
         description: formData.get("description") as string,
         category: formData.get("category") as string,
         img_link: formData.get("img_link") as string,
-        pitch,
+        pitch, 
       };
       await formSchema.parseAsync(formValues);
 
       const result = await createPitch(prevState, formData, pitch);
-      console.log(formValues);
+      //console.log(formValues);
 
       if (result.status == "SUCCESS") {
         toast({
           title: "Success",
           description: "Ypur event has been created successful",
         });
-        router.push(`/events/${result.id}`);
+        router.push(`/events/${result._id}`);
       }
+      //console.log("eee:", result._id)
+      //console.log(result);
 
 
       return result;
@@ -103,14 +105,18 @@ export default function EventsForm() {
       <div>
         <label htmlFor="pitch">Pitch</label>
         <MDEditor
+        value={pitch}
+        onChange={(value) => setPitch(value as string)}
         id="pitch"
         height={300}
         preview="edit"
-        value={pitch}
-        onChange={(value) => setPitch(value as string)}
+        style={{ borderRadius: 20, overflow: "hidden" }}
         textareaProps={{
           placeholder:
           "brief on pitch",
+        }}
+        previewOptions={{
+          disallowedElements: ["style"],
         }}
         />
         {errors.pitch && <p>{errors.pitch}</p>}

@@ -1,15 +1,19 @@
-import React from "react";
-import Ping from "./Ping";
+import React from "react"; 
+import Ping from "@/components/Ping";
 import { client } from "@/sanity/lib/client";
 import { TECH_EVENTS_VIEWS_QUERY } from "@/sanity/lib/queries";
-import { writeClient } from "@/sanity/lib/write-client";
+import { writeClient } from "@/sanity/lib/write-client"; 
 
-export default async function View({id}: {id:string}){
-    const { views: totalViews } = await client.withConfig({useCdn:false})
+const View = async ({id}: {id:string}) =>{
+    const { views: totalViews } = await client
+    .withConfig({useCdn:false})
     .fetch(TECH_EVENTS_VIEWS_QUERY, {id})
     //await writeClient.patch(id).set({views: totalViews + 1}).commit()
 
-    const updatedRecord = await writeClient.patch(id).set({ views: totalViews + 1 }).commit();
+    await writeClient
+    .patch(id)
+    .set({ views: totalViews + 1 })
+    .commit();
     /*
             // Post-update logic directly
     console.log('Views updated:', updatedRecord.views);
@@ -21,7 +25,8 @@ export default async function View({id}: {id:string}){
             <span>
                 <Ping />
             </span>
-            <p>views: {updatedRecord.views}</p>
+            <p>views: {totalViews}</p>
         </div>
     )
 }
+export default View;

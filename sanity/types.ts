@@ -118,6 +118,12 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
 export type SanityAssetSourceData = {
   _type: "sanity.assetSourceData";
   name?: string;
@@ -132,23 +138,17 @@ export type TechEvents = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  slug?: Slug;
   author?: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "author";
   };
+  views?: number;
   description?: string;
   category?: string;
   image?: string;
   pitch?: string;
-};
-
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
 };
 
 export type Author = {
@@ -157,6 +157,7 @@ export type Author = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  id?: number;
   name?: string;
   username?: string;
   email?: string;
@@ -166,5 +167,5 @@ export type Author = {
 
 export type Markdown = string;
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | SanityAssetSourceData | TechEvents | Slug | Author | Markdown;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData | TechEvents | Author | Markdown;
 export declare const internalGroqTypeReferenceTo: unique symbol;

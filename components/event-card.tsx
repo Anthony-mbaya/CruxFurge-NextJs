@@ -41,7 +41,7 @@ export default function EventCard({ post }: { post: EventTypeCard}) {
             alt="placeprof"
             width={40}
             height={40}
-            className="rounded-full"
+            className="rounded-full w-auto h-auto"
           />
         </Link>
         <Link href={`/events/${_id}`}>

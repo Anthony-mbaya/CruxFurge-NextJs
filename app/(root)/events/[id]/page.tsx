@@ -13,6 +13,7 @@ export const experimental_ppr = true;
 
 const EventDetails = async ({ params }: {params: Promise<{id:string}>}) =>{
     const id = (await params).id;
+
     const post = await client.fetch(TECH_EVENT_BY_ID, {id});
     if(!post) return notFound();
     return(
@@ -24,7 +25,7 @@ const EventDetails = async ({ params }: {params: Promise<{id:string}>}) =>{
         <img src={post.image} alt="posrt image" />
         <Link href={`/user/${post.author?._id}`} >
         <Image
-            src={post.author?.image}
+            src={post.author.image}
             className="rounded-full"
             alt="avatar"
             width={64}
