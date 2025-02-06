@@ -11,6 +11,7 @@ export type EventTypeCard = Omit<import("@/sanity/types").TechEvents, "author"> 
 export default function EventCard({ post }: { post: EventTypeCard}) {
   const {
     _createdAt,
+    views,
     author,
     _id,
     description,
@@ -25,7 +26,7 @@ export default function EventCard({ post }: { post: EventTypeCard}) {
         <p className="date">{formatDate(_createdAt)}</p>
         <div className="outline outline-green-600 flex">
           <EyeIcon size={20} />
-          <span>{3}</span>
+          <span>{views}</span>
         </div>
       </div>
       <div>
@@ -37,16 +38,16 @@ export default function EventCard({ post }: { post: EventTypeCard}) {
         </Link>
         <Link href={`/user/${author?._id}`}>
           <Image
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx0QRDMs3JYGNs4aXjPW8NQQEXSjljjl1PIQ&s'
-            alt="placeprof"
+            src={author?.image}
+            alt={author?.name!}
             width={40}
             height={40}
-            className="rounded-full w-auto h-auto"
+            className="rounded-full"
           />
         </Link>
         <Link href={`/events/${_id}`}>
         <p>{description}</p>
-        <img src={image} width={200} height={200} alt="fdfds" />
+        <Image src={image} width={200} height={200} alt="fdfds" />
         </Link>
         <div className="flex justify-between">
           <Link href={`/?query=${category?.toLowerCase()}`}>
