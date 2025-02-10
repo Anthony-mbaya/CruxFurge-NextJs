@@ -37,13 +37,15 @@ export default function EventCard({ post }: { post: EventTypeCard}) {
           <h2 className="font-bold">{title}</h2>
         </Link>
         <Link href={`/user/${author?._id}`}>
-          <Image
-            src={author?.image}
-            alt={author?.name!}
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          {author?.image ? (
+              <Image
+                src={author.image}
+                alt={author?.name || "Author profile picture"}
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+          ) : null}
         </Link>
         <Link href={`/events/${_id}`}>
         <p>{description}</p>
