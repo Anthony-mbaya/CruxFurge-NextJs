@@ -1,5 +1,6 @@
 import Link from "next/link";
 //import Image from "next/image";
+import { ViewIcon } from "lucide-react";
 
 import React from "react";
 import { auth, signOut, signIn } from "@/auth";
@@ -7,15 +8,16 @@ import { auth, signOut, signIn } from "@/auth";
 const Navbar = async () => {
   const session = await auth();
   return (
-    <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
-      <nav className="flex justify-between items-center">
-        <Link href="/">
-          <img src="/logo.jpeg" alt="logo" width={144} height={30} />
+    <header className="border border-red-500 bg-white bg-opacity-90 fixed top-0 left-0 z-10 text-sm w-screen">
+      <nav className="w-full px-2 py-2 flex justify-between items-center">
+        <Link href="/" className="flex items-center justify-center gap-1">
+          <img src="/logo.jpeg" alt="logo" className="rounded-full w-10 h-10" />
+          <p className="text-[#2565c7] font-extralight[">CruxFurge</p>
         </Link>
         {/* links */}
-        <div className="links text-black">
+        <div className="links text-[#2565c7]">
           {session && session?.user ? (
-            <div className="flex items-center gap-4">
+            <div className="flex justify-center items-center gap-2">
               <Link href="/events/create">create</Link>
               <form
                 action={async () => {
@@ -31,17 +33,17 @@ const Navbar = async () => {
               </Link>
             </div>
           ) : (
-            <div className="flex items-center gap-4">
-              <Link href="/events">events</Link>
+            <div className="flex justify-center items-center gap-1 text-[0.8rem]">
+              <Link href="/events" className="flex justify-center items-center gap-1 text-slate-900"> <ViewIcon size={7} color="green" className="animate-ping" /> events</Link>
               <form
                 action={async () => {
                   "use server";
                   await signIn("github");
                 }}
               >
-                <button type="submit">Login</button>
+                <button type="submit" className="ml-2 border border-[#2565c7] px-1 rounded-sm">login</button>
               </form>
-              <Link href="/register">register</Link>
+              <Link href="/register" className="border border-[#2565c7] px-1 rounded-sm">create account</Link>
             </div>
           )}
         </div>

@@ -7,12 +7,12 @@ const SearchInput = ({ search }) => {
     <Form
       action="/"
       scroll={false}
-      className="w-4/5 outline outline-black text-black bg-gray-800 flex gap-2"
+      className="mx-auto w-3/5 outline flex gap-2"
     >
       <input
         name="query"
         defaultValue={search}
-        className="search-input"
+        className="search-input border border-red-500"
         placeholder="Search events..."
       />
       <div className="border border-red-500">

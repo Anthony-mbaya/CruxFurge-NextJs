@@ -16,14 +16,13 @@ export default async function Home({ searchParams }: {searchParams: Promise<{ qu
   //console.log(JSON.stringify(posts, null, 2));
 
   return (
-    <>
-      <section className="header-section">
-        <h1 className="heading text-white">CruxFurge</h1>
+    <section className="container w-screen">
+      <section className="search_input fixed top-[3.65rem] left-0 w-screen "> 
         <SearchInput search={searchQuery} />
       </section>
-      <section className="cards-container">
+      <section className="cards-container mt-[5.3rem] flex flex-wrap border-2 border-green-500">
         <p>{searchQuery ? `Results for ${searchQuery}` : "all events"}</p>
-        <ul className="cards flex gap-3">
+        <ul className="w-screen flex flex-wrap gap-3">
           {
             posts?.length > 0 ? (
               posts.map((post: EventTypeCard) => (
@@ -35,6 +34,6 @@ export default async function Home({ searchParams }: {searchParams: Promise<{ qu
         </ul>
       </section>
       <SanityLive />
-    </>
+    </section>
   );
 }
