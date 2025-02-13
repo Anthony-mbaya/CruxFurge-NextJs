@@ -8,8 +8,8 @@ import { auth, signOut, signIn } from "@/auth";
 const Navbar = async () => {
   const session = await auth();
   return (
-    <header className="border border-red-500 bg-white bg-opacity-90 fixed top-0 left-0 z-10 text-sm w-screen">
-      <nav className="w-full px-2 py-2 flex justify-between items-center">
+    <header className="bg-white bg-opacity-90 fixed top-0 left-0 z-10 text-sm w-fit">
+      <nav className="w-screen px-2 py-2 flex justify-between items-center">
         <Link href="/" className="flex items-center justify-center gap-1">
           <img src="/logo.jpeg" alt="logo" className="rounded-full w-10 h-10" />
           <p className="text-[#2565c7] font-extralight[">CruxFurge</p>

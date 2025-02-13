@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { SquareX } from 'lucide-react';
 
 export default function SearchReset(){
     const reset =()=> {
@@ -9,7 +10,7 @@ export default function SearchReset(){
     }
     return(
         <button type="reset" onClick={reset}>
-            <Link href="/" >X</Link>
+            <Link href="/" ><SquareX size={16} color="blue" /></Link>
         </button>
     )
 }

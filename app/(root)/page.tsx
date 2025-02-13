@@ -16,19 +16,19 @@ export default async function Home({ searchParams }: {searchParams: Promise<{ qu
   //console.log(JSON.stringify(posts, null, 2));
 
   return (
-    <section className="container w-screen">
-      <section className="search_input fixed top-[3.65rem] left-0 w-screen "> 
+    <section className="w-fit">
+      <section className="search_input w-full fixed top-[3.66rem] left-0 ">
         <SearchInput search={searchQuery} />
       </section>
-      <section className="cards-container mt-[5.3rem] flex flex-wrap border-2 border-green-500">
-        <p>{searchQuery ? `Results for ${searchQuery}` : "all events"}</p>
-        <ul className="w-screen flex flex-wrap gap-3">
+      <section className="cards-container w-screen mt-[5.3rem] flex flex-col gap-0 px-2">
+        <p className="text-sm text-center text-slate-900 opacity-30">{searchQuery ? `search results for "${searchQuery}"` : "all events"}</p>
+        <ul className="w-full grid grid-cols-1 mx-auto items-center justify-center gap-3">
           {
             posts?.length > 0 ? (
               posts.map((post: EventTypeCard) => (
               <EventCard key={post?._id} post={post} />))
             ) : (
-              <p>No events found</p>
+              <p className="text-sm text-red-600">No events found</p>
             )
           }
         </ul>

@@ -21,11 +21,11 @@ export default function EventCard({ post }: { post: EventTypeCard}) {
   } = post;
   //console.log(`/user/${author?.image}`);
   return (
-    <li className="event-card border border-red-600 p-2">
+    <li className="event-card rounded-md border border-[#2565c7] p-2">
       <div className="flex justify-between">
         <p className="date">{formatDate(_createdAt)}</p>
-        <div className="outline outline-green-600 flex">
-          <EyeIcon size={20} />
+        <div className="flex gap-1 justify-center items-center">
+          <EyeIcon size={16} color="blue" />
           <span>{views}</span>
         </div>
       </div>
