@@ -8,12 +8,12 @@ const SearchInput = ({ search }) => {
     <Form
       action="/"
       scroll={false}
-      className="mx-auto flex justify-center items-center gap-2"
+      className="w-fit sm:w-4/5 rounded-full mx-auto flex justify-center items-center gap-2"
     >
       <input
         name="query"
         defaultValue={search}
-        className="search-input w-3/5 text-center outline-none focus:outline-blue-500 text-sm"
+        className="search-input w-5/5 sm:py-1 rounded-full text-center outline-none focus:outline-blue-500 text-sm sm:text-[0.9rem]"
         placeholder="Search events..."
       />
       <div className="flex justify-center items-center gap-1">

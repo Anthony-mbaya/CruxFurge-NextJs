@@ -13,30 +13,34 @@ const UserPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const session = await auth();
 	const user = await client.fetch(AUTHOR_BY_ID_QUERY, {id});
 	if(!user) return notFound();
-	return (<>
-		<h3>{user.name}</h3>
-		<Image
-		src={user.image}
-		alt={user.name}
-		width={220}
-		height={220}
-		/>
-		<p>@{user?.username}</p>
-		<p>{user?.bio}</p>
+	return (
+		<div className='w-screen h-screen pt-[3.6rem] px-2 bg-gray-300 flex flex-col gap-2'>
+		<div className='flex flex-row items-center justify-between'>
+			<span className='flex flex-row gap-1 items-center'>
+				<img
+			src={user.image}
+			alt={user.name} 
+			className="w-10 h-10 rounded-full"
+			/>
+			<h3>{user.name}</h3>
+			</span>
+			<p>@{user?.username}</p>
+		</div>
+		<div className="bg-white rounded-sm px-1 py-3">{user?.bio}</div>
 		<div>
-			<p>
+			<p className="text-center">
 				{
-					session?.id === id ? "Your " : "All "
+					session?.id === id ? "Your " : `All ${user.name}'s`
 				} Tech Events
 			</p>
 			<ul>
-			<Suspense fallback={<p>loaidn...</p>}>
+			<Suspense fallback={<p>loading...</p>}>
 			<UserEvents id={id} />
 			</Suspense>
 			</ul>
 		</div>
-
-	</>)
+	</div>
+	)
 
 }
 
