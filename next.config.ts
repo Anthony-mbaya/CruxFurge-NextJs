@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['placehold.co','unsplash.com','dclrlzd4gl55u.cloudfront.net', 'upload.wikimedia.org', 'encrypted-tbn0.gstatic.com'],
+    domains: ['placehold.co','unsplash.com', 'en.wikipedia.org', 'dclrlzd4gl55u.cloudfront.net', 'upload.wikimedia.org', 'encrypted-tbn0.gstatic.com', 'www.google.com'],
     dangerouslyAllowSVG: true,
     remotePatterns: [
       {

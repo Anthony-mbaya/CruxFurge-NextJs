@@ -39,7 +39,7 @@ export default function EventCard({ post }: { post: EventTypeCard}) {
           <p>{category}</p>
       </Link>
       <p>Time: February 13 2025 12:00 noon</p>
-      <p>{description}</p>
+      <p className="line-clamp-2">{description}</p>
       <div className="mt-2 mb-2 flex flex-row-reverse items-center justify-end gap-1">
         <Link href={`/user/${author?._id}`}>
           <p className="author text-sm italic text-blue-600">{author?.name}</p>

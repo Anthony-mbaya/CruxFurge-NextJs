@@ -34,7 +34,7 @@ const Navbar = async () => {
             </div>
           ) : (
             <div className="flex justify-center items-center gap-1 sm:gap-2 sm:gap-3 text-[0.8rem] sm:text-[0.9rem] md:text-[1rem]">
-              <Link href="/events" className="flex justify-center items-center gap-1 sm:gap-2 text-slate-900"> <ViewIcon size={7} color="green" className="animate-ping" /> events</Link>
+              <Link href="/" className="flex justify-center items-center gap-1 sm:gap-2 text-slate-900"> <ViewIcon size={7} color="green" className="animate-ping" /> events</Link>
               <form
                 action={async () => {
                   "use server";

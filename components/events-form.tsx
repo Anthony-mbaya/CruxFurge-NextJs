@@ -71,10 +71,10 @@ export default function EventsForm() {
   });
 
   return (
-    <form action={formAction}>
+    <form action={formAction} className="bg-gray-300 px-2 h-screen w-screen pt-[3.6rem] flex flex-col gap-2">
       <div>
         <label htmlFor="title">Title</label>
-        <Input id="title" name="title" required placeholder="event title" />
+        <Input id="title" name="title" required placeholder="event title" className='bg-white' />
         {errors.title && <p>{errors.title}</p>}
       </div>
       <div>
@@ -84,6 +84,7 @@ export default function EventsForm() {
           name="description"
           required
           placeholder="event description"
+          className='bg-white'
         />
         {errors.description && <p>{errors.description}</p>}
       </div>
@@ -94,12 +95,13 @@ export default function EventsForm() {
           name="category"
           required
           placeholder="category: data security"
+          className='bg-white'
         />
         {errors.category && <p>{errors.category}</p>}
       </div>
       <div>
         <label htmlFor="img_link">Image Url</label>
-        <Input id="img_link" name="img_link" required placeholder="img_link" />
+        <Input id="img_link" name="img_link" required placeholder="img_link" className='bg-white' />
         {errors.img_link && <p>{errors.img_link}</p>}
       </div>
       <div>
