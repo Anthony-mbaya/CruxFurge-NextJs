@@ -8,7 +8,7 @@
   "rewrites": [ 
     {
       "source": "/studio/",
-      "destination": "/studio/sanity"
+      "destination": "/sanity"
     }
   ]
 }
