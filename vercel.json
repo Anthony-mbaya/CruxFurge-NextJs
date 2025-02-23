@@ -1,14 +1,19 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "sanity.config.ts",
-      "use": "@vercel/node"
+      "src": "package.json",
+      "use": "@vercel/next"
     }
   ],
   "rewrites": [
     {
-      "source": "/studio",
-      "destination": "/sanity"
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/studio/:path*",
+      "destination": "/studio/:path*"
     }
   ]
 }
