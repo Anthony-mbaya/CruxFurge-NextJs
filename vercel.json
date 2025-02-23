@@ -1,0 +1,8 @@
+{
+  "builds": [
+    {
+      "src": "sanity.config.ts",
+      "use": "@vercel/node"
+    }
+  ]
+}
