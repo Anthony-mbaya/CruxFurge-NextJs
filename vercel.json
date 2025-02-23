@@ -4,5 +4,11 @@
       "src": "sanity.config.ts",
       "use": "@vercel/node"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/studio",
+      "destination": "/sanity"
+    }
   ]
 }
