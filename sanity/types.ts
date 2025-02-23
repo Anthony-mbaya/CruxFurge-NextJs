@@ -148,6 +148,7 @@ export type TechEvents = {
   description?: string;
   category?: string;
   image?: string;
+  dateTime?: string;
   pitch?: string;
 };
 

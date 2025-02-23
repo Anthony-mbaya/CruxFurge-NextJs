@@ -10,7 +10,8 @@ export const TECH_EVENTS_QUERY = defineQuery(`*[_type == "tech-events" && !defin
     views,
     description,
     category,
-    image
+    image,
+    dateTime
     } `);
 
 
@@ -26,7 +27,8 @@ defineQuery(`*[_type == "tech-events" && _id == $id][0] {
     description,
     category,
     image,
-    pitch
+    pitch,
+    dateTime,
     }`);
 
 export const TECH_EVENTS_VIEWS_QUERY =
@@ -65,5 +67,6 @@ export const TECH_EVENTS_BY_AUTHOR_QUERY = defineQuery(`*[_type == "tech-events"
     views,
     description,
     category,
-    image
+    image,
+    dateTime
     } `);

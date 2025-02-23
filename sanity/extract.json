@@ -792,6 +792,13 @@
         },
         "optional": true
       },
+      "dateTime": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "pitch": {
         "type": "objectAttribute",
         "value": {

@@ -1,4 +1,4 @@
- import { defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const techEvents = defineType(
     {
@@ -41,6 +41,12 @@ export const techEvents = defineType(
                     name: 'image',
                     type: 'url',
                     validation: (Rule) => Rule.required(),
+                }
+            ),
+            defineField(
+                {
+                    name: 'dateTime',
+                    type: 'string',
                 }
             ),
             defineField(

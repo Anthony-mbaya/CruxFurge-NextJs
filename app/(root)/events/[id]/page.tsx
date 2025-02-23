@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatDate } from "@/lib/utils";
 import { TECH_EVENT_BY_ID } from "@/sanity/lib/queries";
-//import Image from "next/image";
+import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/view";
 
@@ -16,17 +16,17 @@ const EventDetails = async ({ params }: {params: Promise<{id:string}>}) =>{
 
     const post = await client.fetch(TECH_EVENT_BY_ID, {id});
     if(!post) return notFound();
+
     return(
-        <div className='pt-[3.6rem] px-2 py-1 flex flex-col gap-2 bg-gray-200 h-screen'>
+        <div className='pt-[3.6rem] sm:pt-[5rem] px-2 sm:px-10 md:px-28 lg:px-44 py-1 sm:py-10 flex flex-col gap-2 bg-gray-200'>
         <h1 className='text-xl font-bold'>Event Details - "{post.title}"</h1>
         <p className="text-[0.8rem]">Created: {formatDate(post?._createdAt)}</p>
         <p>{post.category}</p>
         <div className='bg-white py-3 px-1 rounded-sm shadow-sm text-slate-900 font-semibold'>{ post.description }</div>
-        <img src={post.image} alt="details image" />
+        <Image src={post.image} alt="details image" width={600} height={200} className="w-full h-auto mx-auto md:w-[50rem] " />
         <div className="bg-white py-3 px-1 rounded-sm shadow-sm text-slate-900 font-semibold flex flex-col gap-1">
-            <span>Location: set location </span>
-            <span>Date: set date </span>
-            <span>Venue: set venue </span>
+
+            <span>Date: {post.dateTime} </span>
         </div>
         <div className="bg-white">{post.pitch}</div>
         <div className="flex flex-col gap-2">
@@ -34,11 +34,11 @@ const EventDetails = async ({ params }: {params: Promise<{id:string}>}) =>{
         <Link href={`/user/${post.author?._id}`} className="flex flex-row gap-2 items-center" >
         <img
             src={post.author.image}
-            className="rounded-full w-10 h-10" 
+            className="rounded-full w-10 h-10"
         />
         <p>{post.author.username}</p>
         </Link>
-        </div> 
+        </div>
         <Suspense fallback={<Skeleton />}>
             <View id={id} />
         </Suspense>

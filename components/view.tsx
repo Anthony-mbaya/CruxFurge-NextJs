@@ -1,15 +1,15 @@
-import React from "react"; 
+import React from "react";
 import Ping from "@/components/Ping";
 import { client } from "@/sanity/lib/client";
 import { TECH_EVENTS_VIEWS_QUERY } from "@/sanity/lib/queries";
-import { writeClient } from "@/sanity/lib/write-client"; 
+import { writeClient } from "@/sanity/lib/write-client";
 
-const View = async ({id}: {id:string}) =>{ 
+const View = async ({id}: {id:string}) =>{
     const data = await client
     .withConfig({useCdn:false})
     .fetch(TECH_EVENTS_VIEWS_QUERY, {id});
     //await writeClient.patch(id).set({views: totalViews + 1}).commit()
- 
+
     const totalViews = data?.views || 0;
 
     //const {views:totalViews} = data;
@@ -25,7 +25,7 @@ const View = async ({id}: {id:string}) =>{
     //console.error('Error updating views:');
     */
     return(
-        <div className="border border-red-500 w-fit h-fit fixed bottom-2 right-1">
+        <div className="border border-red-500 w-fit h-fit fixed bottom-2 right-1 px-4">
             <span>
                 <Ping />
             </span>

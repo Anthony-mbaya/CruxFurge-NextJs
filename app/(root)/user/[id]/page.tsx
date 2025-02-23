@@ -14,12 +14,12 @@ const UserPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const user = await client.fetch(AUTHOR_BY_ID_QUERY, {id});
 	if(!user) return notFound();
 	return (
-		<div className='w-screen h-screen pt-[3.6rem] px-2 bg-gray-300 flex flex-col gap-2'>
+		<div className='w-full pt-[3.6rem] sm:pt-[5rem] px-2 sm:px-5 flex flex-col gap-2'>
 		<div className='flex flex-row items-center justify-between'>
 			<span className='flex flex-row gap-1 items-center'>
 				<img
 			src={user.image}
-			alt={user.name} 
+			alt={user.name}
 			className="w-10 h-10 rounded-full"
 			/>
 			<h3>{user.name}</h3>
@@ -33,7 +33,7 @@ const UserPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 					session?.id === id ? "Your " : `All ${user.name}'s`
 				} Tech Events
 			</p>
-			<ul>
+			<ul className="mx-auto grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] lg:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-center gap-3" >
 			<Suspense fallback={<p>loading...</p>}>
 			<UserEvents id={id} />
 			</Suspense>

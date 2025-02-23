@@ -18,13 +18,14 @@ export default function EventCard({ post }: { post: EventTypeCard}) {
     image,
     category,
     title,
+    dateTime,
   } = post;
-  //console.log(`/user/${author?.image}`);
+  console.log(dateTime);
   return (
     <li className="event-card mx-auto max-w-sm h-full rounded-md border border-[#2565c7] p-2 flex flex-col justify-between">
       <div className="flex justify-between text-sm">
         <p className="date">Created: {formatDate(_createdAt)}</p>
-        <div className="flex gap-0 justify-center items-center">
+        <div className="flex flex-row gap-1 justify-center items-center">
           <EyeIcon size={16} color="blue" />
           <span>{views}</span>
         </div>
@@ -38,7 +39,7 @@ export default function EventCard({ post }: { post: EventTypeCard}) {
       <Link href={`/?query=${category?.toLowerCase()}`}>
           <p>{category}</p>
       </Link>
-      <p>Time: February 13 2025 12:00 noon</p>
+      <p>Time: {dateTime}</p>
       <p className="line-clamp-2">{description}</p>
       <div className="mt-2 mb-2 flex flex-row-reverse items-center justify-end gap-1">
         <Link href={`/user/${author?._id}`}>

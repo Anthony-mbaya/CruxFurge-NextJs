@@ -15,7 +15,7 @@ export default function EventsForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pitch, setPitch] = useState("hello");
   const { toast } = useToast();
-  const router = useRouter(); 
+  const router = useRouter();
   const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
       const formValues = {
@@ -23,7 +23,8 @@ export default function EventsForm() {
         description: formData.get("description") as string,
         category: formData.get("category") as string,
         img_link: formData.get("img_link") as string,
-        pitch, 
+        dateTime: formData.get("dateTime") as string,
+        pitch,
       };
       await formSchema.parseAsync(formValues);
 
@@ -103,6 +104,11 @@ export default function EventsForm() {
         <label htmlFor="img_link">Image Url</label>
         <Input id="img_link" name="img_link" required placeholder="img_link" className='bg-white' />
         {errors.img_link && <p>{errors.img_link}</p>}
+      </div>
+      <div>
+      <label htmlFor="dateTime">Date</label>
+      <Input type="datetime-local" name="dateTime" id="dateTime" placeholder="Date and Time" required />
+      {errors.dateTime && <p>{errors.dateTime}</p>}
       </div>
       <div>
         <label htmlFor="pitch">Pitch</label>
