@@ -34,7 +34,7 @@ const Navbar = async () => {
             </div>
           ) : (
             <div className="flex justify-center items-center gap-1 sm:gap-2 text-[0.8rem] sm:text-[0.9rem] md:text-[1rem]">
-              <div className="text-yellow-600 bg-yellow-100 p-2 rounded-md text-[0.75rem]">
+              <div className="text-yellow-600 rounded-md text-[0.75rem]">
                 Login to create event!
               </div>
               <Link href="/" className="flex justify-center items-center gap-1 sm:gap-2 text-slate-900"> <ViewIcon size={7} color="green" className="animate-ping" /> events</Link>
