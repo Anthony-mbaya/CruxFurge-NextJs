@@ -34,6 +34,9 @@ const Navbar = async () => {
             </div>
           ) : (
             <div className="flex justify-center items-center gap-1 sm:gap-2 sm:gap-3 text-[0.8rem] sm:text-[0.9rem] md:text-[1rem]">
+              <div className="text-yellow-600 bg-yellow-100 p-2 rounded-md">
+                You are not logged in! Please login to create event.
+              </div>
               <Link href="/" className="flex justify-center items-center gap-1 sm:gap-2 text-slate-900"> <ViewIcon size={7} color="green" className="animate-ping" /> events</Link>
               <form
                 action={async () => {
@@ -43,7 +46,6 @@ const Navbar = async () => {
               >
                 <button type="submit" className="ml-2 border border-[#2565c7] px-1 sm:px-2 sm:py-1 hover:bg-slate-200 rounded-sm">login</button>
               </form>
-              <Link href="/register" className="border border-[#2565c7] px-1 sm:px-2 sm:py-1 hover:bg-slate-200 rounded-sm">create account</Link>
             </div>
           )}
         </div>
